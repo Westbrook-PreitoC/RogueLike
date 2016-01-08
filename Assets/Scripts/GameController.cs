@@ -3,12 +3,19 @@ using System.Collections;
 
 public class NewBehaviourScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	public static GameController Instance;
+
+	void Awake () {
+		if (Instance != null && Instance != this) 
+		{
+			Destroy(gameObject);
+			return;
+		}
+
+		Instance = this;
+		DontDestroyOnLoad (gameObject);
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 	
 	}
