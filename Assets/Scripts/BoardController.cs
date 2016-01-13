@@ -7,6 +7,7 @@ public class BoardController : MonoBehaviour {
 	public int rows;
 	
 	public GameObject[] floors;
+	public GameObject[] outerWalls;
 
 	private Transform gameBoard;
 	
@@ -26,8 +27,16 @@ public class BoardController : MonoBehaviour {
 		{
 			for(int y = 0; y < rows; y++)
 			{
-				GameObject selectedTile = floors[Random.Range(0, floors.Length)];
-				GameObject floorTile = (GameObject)Instantiate(selectedTile, new Vector3(x, y, 0f), Quaternion.identity);
+				GameObject selectedTile;
+				if(x == 0 || y == 0 || x == columns - 1 || y == rows - 1)
+				{
+					selectedTile = outerWalls[Random.Range(0, outerWalls.Length)];
+				}
+				else
+				{
+					selectedTile = floors[Random.Range(0, floors.Length)];
+				}
+				GameObject floorTile = (GameObject)Instantiate(selectedTile	, new Vector3(x, y, 0f), Quaternion.identity);
 				floorTile.transform.SetParent(gameBoard);
 			}
 		}
