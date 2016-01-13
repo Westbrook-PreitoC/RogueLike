@@ -5,7 +5,7 @@ public class GameController : MonoBehaviour {
 
 	public static GameController Instance;
 
-	private BoardController boardController;
+	private BoardController boardController;	
 
 	void Awake () {
 		if(Instance != null && Instance != this) 
