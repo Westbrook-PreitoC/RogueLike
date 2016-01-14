@@ -25,7 +25,7 @@ public class BoardController : MonoBehaviour {
 	{
 		obstaclesGrid.Clear();
 
-		for (int x = 2; x < columns - 2; x++) 
+		for(int x = 2; x < columns - 2; x++) 
 		{
 			for(int y = 2; y < rows - 2; y++)
 			{
@@ -55,6 +55,29 @@ public class BoardController : MonoBehaviour {
 				floorTile.transform.SetParent(gameBoard);
 			}
 		}
+	}
+	
+	private void SetRandomObstaclesOnGrid(GameObject[] obstaclesArray, int minimum, int maximum )
+	{
+		int obstacleCount = Random.Range (minimmum, maximum + 1);
+
+		if(obstacleCount > obstaclesGrid.Count) 
+		{
+			obstacleCount = obstaclesGrid.Count;
+		}
+
+		for(int index = 0; index < obstacleCount; index++) 
+		{
+			//Generate a random position and use it to generate a random obstacle tile
+		}
+	}
+
+	private Vector3 SelectGridPosition()
+	{
+		int randomIndex = Random.Range(0, obstaclesGrid.Count);
+		Vector3 randomPosition = obstaclesGrid[randomIndex];
+		obstaclesGrid.RemoveAt(randomIndex);
+		return randomPosition;
 	}
 
 	public void SetupLevel()
