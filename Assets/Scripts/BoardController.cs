@@ -9,6 +9,9 @@ public class BoardController : MonoBehaviour {
 	
 	public GameObject[] floors;
 	public GameObject[] outerWalls;
+	public GameObject[] wallObstacles;	
+	public GameObject[] foodItems;
+	public GameObject[] enemies;
 
 	private Transform gameBoard;
 	private List<Vector3> obstaclesGrid;
@@ -57,9 +60,9 @@ public class BoardController : MonoBehaviour {
 		}
 	}
 	
-	private void SetRandomObstaclesOnGrid(GameObject[] obstaclesArray, int minimum, int maximum )
+	private void SetRandomObstaclesOnGrid(GameObject[] obstaclesArray, int minimum, int maximum)
 	{
-		int obstacleCount = Random.Range (minimmum, maximum + 1);
+		int obstacleCount = Random.Range (minimum, maximum + 1);
 
 		if(obstacleCount > obstaclesGrid.Count) 
 		{
@@ -68,7 +71,8 @@ public class BoardController : MonoBehaviour {
 
 		for(int index = 0; index < obstacleCount; index++) 
 		{
-			//Generate a random position and use it to generate a random obstacle tile
+			GameObject selectedObstacle = obstaclesArray[Random.Range(0, obstaclesArray.Length)];
+			Instantiate(selectedObstacle, SelectGridPosition(), Quaternion.identity);
 		}
 	}
 
@@ -84,5 +88,8 @@ public class BoardController : MonoBehaviour {
 	{
 		InitializeObstaclePositions();
 		SetupGameBoard();
+		SetRandomObstaclesOnGrid(wallObstacles, 3, 9);
+		SetRandomObstaclesOnGrid (foodItems, 1, 5);
+		SetRandomObstaclesOnGrid (enemies, 1, 5);
 	}
 }
