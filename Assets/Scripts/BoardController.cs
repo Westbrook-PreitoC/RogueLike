@@ -12,6 +12,7 @@ public class BoardController : MonoBehaviour {
 	public GameObject[] wallObstacles;	
 	public GameObject[] foodItems;
 	public GameObject[] enemies;
+	public GameObject exit;
 
 	private Transform gameBoard;
 	private List<Vector3> obstaclesGrid;
@@ -91,5 +92,6 @@ public class BoardController : MonoBehaviour {
 		SetRandomObstaclesOnGrid(wallObstacles, 3, 9);
 		SetRandomObstaclesOnGrid (foodItems, 1, 5);
 		SetRandomObstaclesOnGrid (enemies, 1, 5);
+		Instantiate (exit, new Vector3 (columns - 2, rows - 2, 0f), Quaternion.identity);
 	}
 }
