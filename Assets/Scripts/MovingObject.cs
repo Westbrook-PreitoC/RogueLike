@@ -11,6 +11,16 @@ public class MovingObject : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody2D>();
 	}
 
+	protected bool CanObjectMove(int xDirection, int yDirection)
+	{
+		Vector2 startPosition = rigidBody.position;
+		Vector2 endPosition = startPosition + new Vector2 (xDirection, yDirection);
+
+		rigidBody.MovePosition(endPosition);
+
+		return true;
+	}
+
 	void Update () {
 	
 	}
