@@ -10,6 +10,6 @@ public class Player : MovingObject {
 		xAxis = (int)Input.GetAxisRaw("Horizontal");
 		yAxis = (int)Input.GetAxisRaw("Vertical");
 
-		CanObjectMove (xAxis, yAxis);
+		CanObjectMove(xAxis, yAxis);
 	}
 }
