@@ -29,6 +29,23 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update () {
-	
+		if (isPlayerTurn || areEnemiesMoving) 
+		{
+			return;
+		}
+
+		StartCoroutine(MoveEnemies());
+	}
+
+	private IEnumerator MoveEnemies()
+	{
+		areEnemiesMoving = true;
+
+		yield return new WaitForSeconds(0.2f);
+
+		//Code to make ALL enemies move on the game board
+
+		areEnemiesMoving = false;
+		isPlayerTurn = true;
 	}
 }
