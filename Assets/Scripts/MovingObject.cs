@@ -6,7 +6,7 @@ public class MovingObject : MonoBehaviour {
 	private BoxCollider2D boxCollider;
 	private Rigidbody2D rigidBody; 
 
-	void Start () {
+	protected virtual void Start () {
 		boxCollider = GetComponent<BoxCollider2D>();
 		rigidBody = GetComponent<Rigidbody2D>();
 	}
@@ -16,9 +16,14 @@ public class MovingObject : MonoBehaviour {
 		Vector2 startPosition = rigidBody.position;
 		Vector2 endPosition = startPosition + new Vector2 (xDirection, yDirection);
 
-		rigidBody.MovePosition(endPosition);
+		StartCoroutine(SmoothMovementRoutine(endPosition));
 
 		return true;
+	}
+
+	protected IEnumerator SmoothMovementRoutine(Vector2 endPosition) 
+	{
+		// Implement a set of intructions to smooth out movement
 	}
 
 	void Update () {
