@@ -16,8 +16,6 @@ public class MovingObject : MonoBehaviour {
 		Vector2 startPosition = rigidBody.position;
 		Vector2 endPosition = startPosition + new Vector2 (xDirection, yDirection);
 
-		rigidBody.MovePosition(endPosition);
-
 		StartCoroutine(SmoothMovementRoutine(endPosition));
 
 		return true;
