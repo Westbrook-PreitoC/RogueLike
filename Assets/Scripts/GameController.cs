@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
@@ -7,7 +8,8 @@ public class GameController : MonoBehaviour {
 	public bool isPlayerTurn;
 	public bool areEnemiesMoving;
 
-	private BoardController boardController;	
+	private BoardController boardController;
+	private List<Enemy> enemies;
 
 	void Awake () {
 		if(Instance != null && Instance != this) 
@@ -19,6 +21,7 @@ public class GameController : MonoBehaviour {
 		Instance = this;
 		DontDestroyOnLoad(gameObject);
 		boardController = GetComponent<BoardController>();
+		enemies = new List<Enemy>();
 	}
 
 	void Start()
@@ -47,5 +50,10 @@ public class GameController : MonoBehaviour {
 
 		areEnemiesMoving = false;
 		isPlayerTurn = true;
+	}
+
+	public void AddEnemyToList(Enemy enemy)
+	{
+		enemies.Add(enemy);
 	}
 }
