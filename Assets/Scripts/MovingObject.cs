@@ -23,7 +23,15 @@ public class MovingObject : MonoBehaviour {
 
 	protected IEnumerator SmoothMovementRoutine(Vector2 endPosition) 
 	{
-		// Implement a set of intructions to smooth out movement
+		float remainingDistanceToEndPosition;
+
+		do
+		{
+			remainingDistanceToEndPosition = (rigidBody.position - endPosition).sqrMagnitude;
+			Vector2 updatedPosition = Vector2.MoveTowards(rigidBody.position, endPosition, 10f * Time.deltaTime);
+			rigidBody.MovePosition(updatedPosition);
+			yield return null;
+		}while(remainingDistanceToEndPosition > float.Epsilon);
 	}
 
 	void Update () {
