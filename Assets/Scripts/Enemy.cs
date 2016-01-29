@@ -11,7 +11,33 @@ public class Enemy : MovingObject {
 		base.Start();
 	}
 
-	void Update () {
-	
+	public void MoveEnemy() 
+	{
+		int xAxis = 0;
+		int yAxis = 0;
+
+		float xAxisDistance = Mathf.Abs(player.position.x - transform.position.x);
+		float yAxisDistance = Mathf.Abs(player.position.y - transform.position.y);
+
+		if (xAxisDistance > yAxisDistance) {
+			if (player.position.x > transform.position.x) {
+				xAxis = 1;
+			} else {
+				xAxis = -1;
+			}
+		} 
+		else 
+		{
+			if(player.position.y > transform.position.y) 
+			{
+				yAxis = 1;
+			}
+			else 
+			{
+				yAxis = -1;
+			}
+		}
+
+		CanObjectMove(xAxis, yAxis);
 	}
 }
