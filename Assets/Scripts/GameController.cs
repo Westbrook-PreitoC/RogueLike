@@ -46,7 +46,11 @@ public class GameController : MonoBehaviour {
 
 		yield return new WaitForSeconds(0.2f);
 
-		//Code to make ALL enemies move on the game board
+		foreach (Enemy enemy in enemies) 
+		{
+			enemy.MoveEnemy();
+			yield return new WaitForSeconds(enemy.moveTime);
+		}
 
 		areEnemiesMoving = false;
 		isPlayerTurn = true;

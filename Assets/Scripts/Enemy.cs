@@ -20,9 +20,12 @@ public class Enemy : MovingObject {
 		float yAxisDistance = Mathf.Abs(player.position.y - transform.position.y);
 
 		if (xAxisDistance > yAxisDistance) {
-			if (player.position.x > transform.position.x) {
+			if (player.position.x > transform.position.x) 
+			{
 				xAxis = 1;
-			} else {
+			} 
+			else 
+			{
 				xAxis = -1;
 			}
 		} 
