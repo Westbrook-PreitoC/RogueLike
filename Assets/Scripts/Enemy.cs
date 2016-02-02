@@ -5,16 +5,36 @@ public class Enemy : MovingObject {
 
 	public bool isEnemyStrong;
 
+	private bool skipCurrentMove;
 	private Transform player;
 
 	protected override void Start () {
 		GameController.Instance.AddEnemyToList(this);
 		player = GameObject.FindGameObjectWithTag("Player").transform;
+		skipCurrentMove = true;
 		base.Start();
 	}
 
 	public void MoveEnemy() 
 	{
+		if (skipCurrentMove) 
+		{
+			if(isEnemyStrong)
+			{
+				int chanceToMove = Random.Range(1, 4);
+				if(chanceToMove > 1)
+				{ 
+					skipCurrentMove = false;
+					return;
+				}
+			}
+			else 
+			{
+				skipCurrentMove = false;
+				return;
+			}
+		}
+
 		int xAxis = 0;
 		int yAxis = 0;
 
@@ -45,5 +65,6 @@ public class Enemy : MovingObject {
 		}
 
 		CanObjectMove(xAxis, yAxis);
+		skipCurrentMove = true;
 	}
 }
