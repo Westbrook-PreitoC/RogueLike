@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Enemy : MovingObject {
 
+	public bool isEnemyStrong;
+
 	private Transform player;
 
 	protected override void Start () {
