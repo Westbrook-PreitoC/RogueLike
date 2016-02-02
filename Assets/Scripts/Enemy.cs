@@ -64,7 +64,7 @@ public class Enemy : MovingObject {
 			}
 		}
 
-		CanObjectMove(xAxis, yAxis);
+		Move(xAxis, yAxis);
 		skipCurrentMove = true;
 	}
 }
