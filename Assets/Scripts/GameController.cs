@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour {
 
 		yield return new WaitForSeconds(0.2f);
 
-		foreach (Enemy enemy in enemies) 
+		foreach(Enemy enemy in enemies) 
 		{
 			enemy.MoveEnemy();
 			yield return new WaitForSeconds(enemy.moveTime);
