@@ -19,7 +19,8 @@ public class MovingObject : MonoBehaviour {
 
 	protected virtual void Move(int xDirection, int yDirection)
 	{
-		bool canMove = CanObjectMove(xDirection, yDirection);
+		RaycastHit2D hit;
+		bool canMove = CanObjectMove(xDirection, yDirection, out hit);
 
 		if(canMove) 
 		{
@@ -29,13 +30,13 @@ public class MovingObject : MonoBehaviour {
 		//Handle anuy collisions that occurred
 	}
 
-	protected bool CanObjectMove(int xDirection, int yDirection)
+	protected bool CanObjectMove(int xDirection, int yDirection, out RaycastHit2D hit)
 	{
 		Vector2 startPosition = rigidBody.position;
 		Vector2 endPosition = startPosition + new Vector2 (xDirection, yDirection);
 
 		boxCollider.enabled = false;
-		RaycastHit2D hit = Physics2D.Linecast(startPosition, endPosition, collisionLayer);
+		hit = Physics2D.Linecast(startPosition, endPosition, collisionLayer);
 		boxCollider.enabled = true;
 
 		if(hit.transform == null)
