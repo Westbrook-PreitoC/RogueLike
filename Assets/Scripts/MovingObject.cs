@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MovingObject : MonoBehaviour {
+public abstract class MovingObject : MonoBehaviour {
 
 	public float moveTime = 0.1f;
 
@@ -27,7 +27,12 @@ public class MovingObject : MonoBehaviour {
 			return;	
 		}
 
-		//Handle anuy collisions that occurred
+		T hitComponent = hit.transform.GetComponent<T>();
+
+		if (hitComponent != null) 
+		{
+			HandleCollision(hitComponent);
+		}
 	}
 
 	protected bool CanObjectMove(int xDirection, int yDirection, out RaycastHit2D hit)
@@ -36,7 +41,7 @@ public class MovingObject : MonoBehaviour {
 		Vector2 endPosition = startPosition + new Vector2 (xDirection, yDirection);
 
 		boxCollider.enabled = false;
-		hit = Physics2D.Linecast(startPosition, endPosition, collisionLayer);
+				hit = Physics2D.Linecast(startPosition, endPosition, collisionLayer);
 		boxCollider.enabled = true;
 
 		if(hit.transform == null)
@@ -61,7 +66,5 @@ public class MovingObject : MonoBehaviour {
 		}while(remainingDistanceToEndPosition > float.Epsilon);
 	}
 
-	void Update () {
-	
-	}
+	protected abstract void HandleCollision<T>(T component);
 }
