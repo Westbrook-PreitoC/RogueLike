@@ -17,7 +17,7 @@ public abstract class MovingObject : MonoBehaviour {
 		inverseMoveTime = 1.0f / moveTime;
 	}
 
-	protected virtual void Move(int xDirection, int yDirection)
+	protected virtual void Move<T>(int xDirection, int yDirection)
 	{
 		RaycastHit2D hit;
 		bool canMove = CanObjectMove(xDirection, yDirection, out hit);

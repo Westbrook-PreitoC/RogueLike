@@ -64,7 +64,12 @@ public class Enemy : MovingObject {
 			}
 		}
 
-		Move(xAxis, yAxis);
+			Move<Player>(xAxis, yAxis);
 		skipCurrentMove = true;
+	}
+
+	protected override void HandleCollision<T>(T component)
+	{
+
 	}
 }
