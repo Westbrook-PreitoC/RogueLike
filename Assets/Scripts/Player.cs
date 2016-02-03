@@ -30,6 +30,7 @@ public class Player : MovingObject {
 
 	protected override void HandleCollision<T>(T component)
 	{
-
+		Wall wall = component as Wall;
+		wall.DamageWall(1);
 	}
 }
