@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MovingObject {
 
 	private Animator animator;
+	private int attackPower = 1;
 
 	protected override void Start()
 	{
@@ -40,6 +41,6 @@ public class Player : MovingObject {
 	{
 		Wall wall = component as Wall;
 		animator.SetTrigger("playerAttack"); 
-		wall.DamageWall(1);
+		wall.DamageWall(attackPower);
 	}
 }
