@@ -9,9 +9,9 @@ public class Wall : MonoBehaviour {
 	
 	}
 
-	public void DamageWall(int damagedRecieved)
+	public void DamageWall(int damageRecieved)
 	{
-		hitPoints -= damagedRecieved;
+		hitPoints -= damageRecieved;
 		if (hitPoints <= 0) 
 		{
 			gameObject.SetActive(false);
