@@ -3,6 +3,14 @@ using System.Collections;
 
 public class Player : MovingObject {
 
+	private Animator animator;
+
+	protected override void Start()
+	{
+		base.Start();
+		animator = GetComponent<Animator>();
+	}
+
 	void Update () {
 		if (!GameController.Instance.isPlayerTurn)
 		{
@@ -31,6 +39,7 @@ public class Player : MovingObject {
 	protected override void HandleCollision<T>(T component)
 	{
 		Wall wall = component as Wall;
+		animator.SetTrigger("playerAttack"); 
 		wall.DamageWall(1);
 	}
 }
