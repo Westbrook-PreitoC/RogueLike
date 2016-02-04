@@ -50,7 +50,7 @@ public abstract class MovingObject : MonoBehaviour {
 			return true;
 		}
 
-		return true;
+		return false;
 	}
 
 	protected IEnumerator SmoothMovementRoutine(Vector2 endPosition) 

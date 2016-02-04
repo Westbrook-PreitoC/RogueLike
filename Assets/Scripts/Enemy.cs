@@ -7,11 +7,13 @@ public class Enemy : MovingObject {
 
 	private bool skipCurrentMove;
 	private Transform player;
+	private Animator animator;
 
 	protected override void Start () {
 		GameController.Instance.AddEnemyToList(this);
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		skipCurrentMove = true;
+		animator = GetComponent<Animator>();
 		base.Start();
 	}
 
@@ -70,6 +72,8 @@ public class Enemy : MovingObject {
 
 	protected override void HandleCollision<T>(T component)
 	{
-
+		Player player = component as Player;
+		//Code here to damage the player
+		animator.SetTrigger("enemyAttack");
 	}
 }
