@@ -44,4 +44,11 @@ public class Player : MovingObject {
 		animator.SetTrigger("playerAttack"); 
 		wall.DamageWall(attackPower);
 	}
+
+	public void TakeDamage(int damageRecieved)
+	{
+		playerHealth -= damageRecieved;
+		animator.SetTrigger("playerHurt");
+		Debug.Log("Player Health: " + playerHealth);
+	}
 }

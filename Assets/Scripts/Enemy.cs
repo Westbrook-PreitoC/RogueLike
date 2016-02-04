@@ -74,7 +74,7 @@ public class Enemy : MovingObject {
 	protected override void HandleCollision<T>(T component)
 	{
 		Player player = component as Player;
-		//Code here to damage the player
+		player.TakeDamage(attackDamage);
 		animator.SetTrigger("enemyAttack");
 	}
 }
