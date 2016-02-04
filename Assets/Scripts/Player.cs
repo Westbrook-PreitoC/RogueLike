@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MovingObject {
 
 	private Animator animator;
+	private int playerHealth = 50;
 	private int attackPower = 1;
 
 	protected override void Start()

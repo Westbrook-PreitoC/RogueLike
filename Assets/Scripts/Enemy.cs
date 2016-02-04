@@ -4,6 +4,7 @@ using System.Collections;
 public class Enemy : MovingObject {
 
 	public bool isEnemyStrong;
+	public int attackDamage;
 
 	private bool skipCurrentMove;
 	private Transform player;
