@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour {
 	public static GameController Instance;
 	public bool isPlayerTurn;
 	public bool areEnemiesMoving;
+	public int playerCurrentHealth = 50;
 
 	private BoardController boardController;
 	private List<Enemy> enemies;

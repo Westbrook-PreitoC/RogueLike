@@ -7,7 +7,7 @@ public class Player : MovingObject {
 	public Text healthText;
 
 	private Animator animator;
-	private int playerHealth = 50;
+	private int playerHealth;
 	private int attackPower = 1;
 	private int healthPerFruit = 5;
 	private int healthPerSoda = 10;
@@ -17,11 +17,17 @@ public class Player : MovingObject {
 	{
 		base.Start();
 		animator = GetComponent<Animator>();
+		playerHealth = GameController.Instance.playerCurrentHealth;
 		healthText.text = "Health: " + playerHealth; 
 	}
 
+	private void OnDisable()
+	{
+		GameController.Instance.playerCurrentHealth = playerHealth;
+	}
+
 	void Update () {
-		if (!GameController.Instance.isPlayerTurn)
+		if(!GameController.Instance.isPlayerTurn)
 		{
 			return;
 		}
