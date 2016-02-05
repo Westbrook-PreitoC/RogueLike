@@ -26,9 +26,19 @@ public class GameController : MonoBehaviour {
 
 	void Start()
 	{
+		InitializeGame();
+	}
+
+	private void InitializeGame()
+	{
 		boardController.SetupLevel();
 		isPlayerTurn = true;
 		areEnemiesMoving = false;
+	}
+
+	private void OnLevelWasLoaded(int levelLoaded) 
+	{
+		InitializeGame();
 	}
 
 	void Update () {
