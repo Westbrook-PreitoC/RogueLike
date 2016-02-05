@@ -44,6 +44,22 @@ public class Player : MovingObject {
 
 	}
 
+	private void OnTriggerEnter2D(Collider2D objectPlayerCollidedWith)
+	{
+		if (objectPlayerCollidedWith.tag == "Exit") 
+		{
+			Debug.Log("Collided with Exit");		
+		} 
+		else if (objectPlayerCollidedWith.tag == "Fruit") 
+		{
+			Debug.Log("Collided with Fruit");
+		} 
+		else if (objectPlayerCollidedWith.tag == "Soda") 
+		{
+			Debug.Log("Collided with Soda");
+		}
+	}
+
 	protected override void HandleCollision<T>(T component)
 	{
 		Wall wall = component as Wall;
