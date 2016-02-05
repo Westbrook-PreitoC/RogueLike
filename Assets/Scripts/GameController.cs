@@ -91,4 +91,11 @@ public class GameController : MonoBehaviour {
 	{
 		enemies.Add(enemy);
 	}
+
+	public void GameOver()
+	{
+		levelText.text = "You Starved after " + currentLevel + " days...";
+		levelImage.SetActive(true);
+		enabled = false;
+	}
 }

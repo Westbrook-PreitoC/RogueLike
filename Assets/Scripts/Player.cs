@@ -99,7 +99,7 @@ public class Player : MovingObject {
 	{
 		if (playerHealth <= 0) 
 		{
-			//Tell the game controller to end the game.
+			GameController.Instance.GameOver();
 		}	
 	}
 }
