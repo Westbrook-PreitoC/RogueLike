@@ -27,6 +27,8 @@ public class Player : MovingObject {
 	}
 
 	void Update () {
+		CheckIfGameOver();
+
 		if(!GameController.Instance.isPlayerTurn)
 		{
 			return;
@@ -91,5 +93,13 @@ public class Player : MovingObject {
 		playerHealth -= damageRecieved;
 		healthText.text = "-" + damageRecieved + " Health\n\t" + "Health: " + playerHealth;
 		animator.SetTrigger("playerHurt");
+	}
+
+	private void CheckIfGameOver()
+	{
+		if (playerHealth <= 0) 
+		{
+			//Tell the game controller to end the game.
+		}	
 	}
 }
