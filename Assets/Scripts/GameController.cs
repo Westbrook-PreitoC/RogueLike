@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour {
 
 	private void InitializeGame()
 	{
+		enemies.Clear();
 		boardController.SetupLevel();
 		isPlayerTurn = true;
 		areEnemiesMoving = false;
