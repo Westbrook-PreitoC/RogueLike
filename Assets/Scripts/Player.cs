@@ -58,6 +58,7 @@ public class Player : MovingObject {
 		if(objectPlayerCollidedWith.tag == "Exit") 
 		{
 			Invoke("LoadNewLevel", secondsUntilNextLevel);
+			enabled = false;
 		} 
 		else if(objectPlayerCollidedWith.tag == "Fruit") 
 		{
