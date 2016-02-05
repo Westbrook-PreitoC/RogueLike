@@ -9,6 +9,8 @@ public class Player : MovingObject {
 	private Animator animator;
 	private int playerHealth = 50;
 	private int attackPower = 1;
+	private int healthPerFruit = 5;
+	private int healthPerSoda = 10;
 
 	protected override void Start()
 	{
@@ -52,11 +54,15 @@ public class Player : MovingObject {
 		} 
 		else if (objectPlayerCollidedWith.tag == "Fruit") 
 		{
-			Debug.Log("Collided with Fruit");
+			playerHealth += healthPerFruit;
+			healthText.text = "+" + healthPerFruit + " Health\n" + "Health: " + playerHealth;
+			objectPlayerCollidedWith.gameObject.SetActive(false);
 		} 
 		else if (objectPlayerCollidedWith.tag == "Soda") 
 		{
-			Debug.Log("Collided with Soda");
+			playerHealth += healthPerSoda;
+			healthText.text = "+" + healthPerSoda + " Health\n" + "Health: " + playerHealth;
+			objectPlayerCollidedWith.gameObject.SetActive(false);
 		}
 	}
 
