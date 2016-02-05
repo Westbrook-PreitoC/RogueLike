@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MovingObject {
+
+	public Text healthText;
 
 	private Animator animator;
 	private int playerHealth = 50;
@@ -11,6 +14,7 @@ public class Player : MovingObject {
 	{
 		base.Start();
 		animator = GetComponent<Animator>();
+		healthText.text = "Health: " + playerHealth; 
 	}
 
 	void Update () {
@@ -32,6 +36,8 @@ public class Player : MovingObject {
 
 		if (xAxis != 0 || yAxis != 0) 
 		{
+			playerHealth--;
+			healthText.text = "Health: " + playerHealth;
 			Move<Wall>(xAxis, yAxis);
 			GameController.Instance.isPlayerTurn = false;
 		}
@@ -48,7 +54,7 @@ public class Player : MovingObject {
 	public void TakeDamage(int damageRecieved)
 	{
 		playerHealth -= damageRecieved;
+		healthText.text = "-" + damageRecieved + " Health\n\t" + "Health: " + playerHealth;
 		animator.SetTrigger("playerHurt");
-		Debug.Log("Player Health: " + playerHealth);
 	}
 }
