@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour {
 	private List<Enemy> enemies;
 	private GameObject levelImage;
 	private Text levelText;
+	private bool settingUpGame;
+	private int secondsUntilLevelStart = 2;
 
 	void Awake () {
 		if(Instance != null && Instance != this) 
@@ -35,11 +37,19 @@ public class GameController : MonoBehaviour {
 
 	private void InitializeGame()
 	{
+		settingUpGame = true;
 		levelImage = GameObject.Find("Level Image");
 		levelText = GameObject.Find("Level Text").GetComponent<Text>();
 		levelImage.SetActive(true);
 		enemies.Clear();
 		boardController.SetupLevel();
+		Invoke("DisableLevelImage", secondsUntilLevelStart);
+	}
+
+	private void DisableLevelImage()
+	{
+		levelImage.SetActive(false);
+		settingUpGame = false;
 		isPlayerTurn = true;
 		areEnemiesMoving = false;
 	}
@@ -50,7 +60,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (isPlayerTurn || areEnemiesMoving) 
+		if (isPlayerTurn || areEnemiesMoving || settingUpGame) 
 		{
 			return;
 		}
