@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	private Text levelText;
 	private bool settingUpGame;
 	private int secondsUntilLevelStart = 2;
+	private int currentLevel = 1;
 
 	void Awake () {
 		if(Instance != null && Instance != this) 
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour {
 		settingUpGame = true;
 		levelImage = GameObject.Find("Level Image");
 		levelText = GameObject.Find("Level Text").GetComponent<Text>();
+		levelText.text = "Day " + currentLevel;
 		levelImage.SetActive(true);
 		enemies.Clear();
 		boardController.SetupLevel();
@@ -56,6 +58,7 @@ public class GameController : MonoBehaviour {
 
 	private void OnLevelWasLoaded(int levelLoaded) 
 	{
+		currentLevel++;
 		InitializeGame();
 	}
 
