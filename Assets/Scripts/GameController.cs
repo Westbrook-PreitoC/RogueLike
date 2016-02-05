@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class GameController : MonoBehaviour {
 
 	private BoardController boardController;
 	private List<Enemy> enemies;
+	private GameObject levelImage;
+	private Text levelText;
 
 	void Awake () {
 		if(Instance != null && Instance != this) 
@@ -32,6 +35,9 @@ public class GameController : MonoBehaviour {
 
 	private void InitializeGame()
 	{
+		levelImage = GameObject.Find("Level Image");
+		levelText = GameObject.Find("Level Text").GetComponent<Text>();
+		levelImage.SetActive(true);
 		enemies.Clear();
 		boardController.SetupLevel();
 		isPlayerTurn = true;
