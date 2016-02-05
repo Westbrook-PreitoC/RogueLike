@@ -11,6 +11,7 @@ public class Player : MovingObject {
 	private int attackPower = 1;
 	private int healthPerFruit = 5;
 	private int healthPerSoda = 10;
+	private int secondsUntilNextLevel = 1;
 
 	protected override void Start()
 	{
@@ -48,22 +49,27 @@ public class Player : MovingObject {
 
 	private void OnTriggerEnter2D(Collider2D objectPlayerCollidedWith)
 	{
-		if (objectPlayerCollidedWith.tag == "Exit") 
+		if(objectPlayerCollidedWith.tag == "Exit") 
 		{
-			Debug.Log("Collided with Exit");		
+			Invoke("LoadNewLevel", secondsUntilNextLevel);
 		} 
-		else if (objectPlayerCollidedWith.tag == "Fruit") 
+		else if(objectPlayerCollidedWith.tag == "Fruit") 
 		{
 			playerHealth += healthPerFruit;
 			healthText.text = "+" + healthPerFruit + " Health\n" + "Health: " + playerHealth;
 			objectPlayerCollidedWith.gameObject.SetActive(false);
 		} 
-		else if (objectPlayerCollidedWith.tag == "Soda") 
+		else if(objectPlayerCollidedWith.tag == "Soda") 
 		{
 			playerHealth += healthPerSoda;
 			healthText.text = "+" + healthPerSoda + " Health\n" + "Health: " + playerHealth;
 			objectPlayerCollidedWith.gameObject.SetActive(false);
 		}
+	}
+
+	private void LoadNewLevel()
+	{
+		Application.LoadLevel(Application.loadedLevel);
 	}
 
 	protected override void HandleCollision<T>(T component)
