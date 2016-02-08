@@ -16,5 +16,17 @@ public class SoundController : MonoBehaviour {
 		Instance = this;
 		DontDestroyOnLoad(gameObject);
 	}
+
+	public void PlaySingle(params AudioClip[] cilps)
+	{
+		RandomizeSoundEffect (clips);
+		soundEffect.Play();
+	}
+
+	private void RandomizeSoundEffect(AudioClip[] clips)
+	{
+		int randomSoundIndex = Random.Range (0, clips.Length);
+		soundEffect.clip = clips [randomSoundIndex];
+	}
 	
 }
