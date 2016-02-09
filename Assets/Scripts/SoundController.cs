@@ -17,7 +17,7 @@ public class SoundController : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 	}
 
-	public void PlaySingle(params AudioClip[] cilps)
+	public void PlaySingle(params AudioClip[] clips)
 	{
 		RandomizeSoundEffect (clips);
 		soundEffect.Play();

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class Player : MovingObject {
 
 	public Text healthText;
+	public AudioClip movementSound1;
+	public AudioClip movementSound2;
 
 	private Animator animator;
 	private int playerHealth;
@@ -50,6 +52,7 @@ public class Player : MovingObject {
 			playerHealth--;
 			healthText.text = "Health: " + playerHealth;
 			Move<Wall>(xAxis, yAxis);
+			SoundController.Instance.PlaySingle(movementSound1, movementSound2);
 			GameController.Instance.isPlayerTurn = false;
 		}
 
