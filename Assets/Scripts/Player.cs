@@ -9,6 +9,10 @@ public class Player : MovingObject {
 	public AudioClip movementSound2;
 	public AudioClip chopSound1;
 	public AudioClip chopSound2;
+	public AudioClip fruitSound1;
+	public AudioClip fruitSound2;
+	public AudioClip sodaSound1;
+	public AudioClip sodaSound2;
 
 	private Animator animator;
 	private int playerHealth;
@@ -72,12 +76,14 @@ public class Player : MovingObject {
 			playerHealth += healthPerFruit;
 			healthText.text = "+" + healthPerFruit + " Health\n" + "Health: " + playerHealth;
 			objectPlayerCollidedWith.gameObject.SetActive(false);
+			SoundController.Instance.PlaySingle(fruitSound1, fruitSound2);
 		} 
 		else if(objectPlayerCollidedWith.tag == "Soda") 
 		{
 			playerHealth += healthPerSoda;
 			healthText.text = "+" + healthPerSoda + " Health\n" + "Health: " + playerHealth;
 			objectPlayerCollidedWith.gameObject.SetActive(false);
+			SoundController.Instance.PlaySingle(sodaSound1, sodaSound2);
 		}
 	}
 
