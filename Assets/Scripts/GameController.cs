@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour {
 		levelText.text = "Day " + currentLevel;
 		levelImage.SetActive(true);
 		enemies.Clear();
-		boardController.SetupLevel();
+		boardController.SetupLevel(currentLevel);
 		Invoke("DisableLevelImage", secondsUntilLevelStart);
 	}
 
