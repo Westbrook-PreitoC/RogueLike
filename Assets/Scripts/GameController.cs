@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
 	public bool isPlayerTurn;
 	public bool areEnemiesMoving;
 	public int playerCurrentHealth = 50;
+	public AudioClip gameOverSound;
 
 	private BoardController boardController;
 	private List<Enemy> enemies;
@@ -94,6 +95,9 @@ public class GameController : MonoBehaviour {
 
 	public void GameOver()
 	{
+		isPlayerTurn = false;
+		SoundController.Instance.music.Stop();
+		SoundController.Instance.PlaySingle(gameOverSound);
 		levelText.text = "You Starved after " + currentLevel + " days...";
 		levelImage.SetActive(true);
 		enabled = false;

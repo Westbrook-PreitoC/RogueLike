@@ -5,6 +5,7 @@ public class SoundController : MonoBehaviour {
 
 	public static SoundController Instance;
 	public AudioSource soundEffect;	
+	public AudioSource music;
 
 	void Awake () {
 		if (Instance != null && Instance != this) 
