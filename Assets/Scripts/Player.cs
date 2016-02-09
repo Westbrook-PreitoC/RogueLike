@@ -7,6 +7,8 @@ public class Player : MovingObject {
 	public Text healthText;
 	public AudioClip movementSound1;
 	public AudioClip movementSound2;
+	public AudioClip chopSound1;
+	public AudioClip chopSound2;
 
 	private Animator animator;
 	private int playerHealth;
@@ -51,8 +53,8 @@ public class Player : MovingObject {
 		{
 			playerHealth--;
 			healthText.text = "Health: " + playerHealth;
-			Move<Wall>(xAxis, yAxis);
 			SoundController.Instance.PlaySingle(movementSound1, movementSound2);
+			Move<Wall>(xAxis, yAxis);
 			GameController.Instance.isPlayerTurn = false;
 		}
 
@@ -87,7 +89,8 @@ public class Player : MovingObject {
 	protected override void HandleCollision<T>(T component)
 	{
 		Wall wall = component as Wall;
-		animator.SetTrigger("playerAttack"); 
+		animator.SetTrigger("playerAttack");
+		SoundController.Instance.PlaySingle(chopSound1, chopSound2);
 		wall.DamageWall(attackPower);
 	}
 
